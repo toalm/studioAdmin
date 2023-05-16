@@ -5,3 +5,4 @@
 /.idea/dataSources.xml
 /.idea/.gitignore
 /.idea/**/*
+db.sqlite3
