@@ -17,7 +17,7 @@ class NotAllowedAccessError(Exception):
 
 
 def _check_if_user_has_access_to_feature(user: 'User',  # NOQA
-                                         feature_name: str):
+                                         feature_name: str) -> bool:
     return False
 
 
