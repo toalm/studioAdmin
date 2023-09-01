@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-5pb-&%*l=^f2x#mwm4us8junc=4@5*)#a#5!g2vi1)ak*ok8j+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -35,9 +35,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'StudioAdmin.apps.StudioadminConfig',
+    'webhook.apps.WebhookConfig',
+    'accounts.apps.AccountsConfig',
     'bootstrap5'
-]
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -80,6 +83,9 @@ DATABASES = {
         }
     }
 
+AUTH_USER_MODEL = 'accounts.CustomUser'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -116,9 +122,36 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-]
+    ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGGING = {
+    "version": 1,  # the dictConfig format version
+    "disable_existing_loggers": False,  # retain the default loggers
+    'formatters': {
+        'standard': {
+            'format': '{asctime} [{levelname}] {filename} {funcName} ({lineno})->{message}',
+            'style': '{'
+            }
+        },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'standard'
+            },
+        },
+    'loggers': {
+        "django": {
+            'handlers': ['console'],
+            'level': 'WARNING',
+            },
+        'StudioAdmin': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            }
+        },
+    }

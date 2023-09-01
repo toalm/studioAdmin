@@ -5,14 +5,12 @@ import logging
 # Third Party
 from django.urls import path
 
-from StudioAdmin import views
-
 from common.const import CONST_LOG_NAME
+from . import views
 
 log = logging.getLogger(CONST_LOG_NAME)
 
-
-app_name = "StudioAdmin"
+app_name = "webhook"
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('stripe', views.stripe_webhook, name='webhook'),
 ]

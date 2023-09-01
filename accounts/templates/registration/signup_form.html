@@ -1,0 +1,73 @@
+<section class="text-center" id="register">
+    <section class="text-center space--xxs" style="border-top: 1px solid #1f1d1d">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10 sm-offset-1 col-md-8 md-offset-2 mx-auto">
+                    <div class="boxed boxed-lg  boxed-border subscribe-form-1">
+                        <div class="text-center">
+                            <h1>Register an Account</h1>
+                            <h5>to create a Taikai or participate in one</h5>
+                            <form id="register-now" autocomplete="new-password"
+                                  action="{% url 'accounts:sign_up' %}"
+                                  method="post"
+                                  class="form-inline">
+                                <input autocomplete="new-password" name="off" type="text" style="display:none;">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading text-center">
+                                    </div>
+                                    <div class="panel-body">
+                                        {{ form.errors }}
+                                        {% if form.errors %}
+                                            <div class="alert alert-error">
+                                                <ul>
+
+                                                    {% for field in form %}
+                                                        {% for error in field.errors %}
+                                                            <li><a href="#id_{{ field.name }}"
+                                                                   class="error">{{ field.name }}
+                                                                - {{ error|escape }}</a></li>
+                                                        {% endfor %}
+                                                    {% endfor %}
+                                                    {% for error in form.non_field_errors %}
+                                                        <li><a href="#id_{{ field.name }}"
+                                                               class="error">{{ error|escape }}</a>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        {% endif %}
+                                        {% csrf_token %}
+                                        <div class="form-group" style="padding-bottom: 15px">
+                                            <label for="{{ form.email.id_for_label }}"
+                                                   class="col-md-4 control-label">Email<span
+                                                    class="text-red">*</span>:</label>
+                                            <input type="email" name="email" class="form-control" required=""
+                                                   id="id_email" autocomplete="new-password">
+                                        </div>
+                                        <div class="form-group" style="padding-bottom: 15px">
+                                            <label for="{{ form.password.id_for_label }}"
+                                                   class="col-md-4 control-label">Password<span
+                                                    class="text-red">*</span>:</label>
+                                            <input type="password" name="password1" class="form-control" required=""
+                                                   id="id_password1">
+                                        </div>
+                                        <div class="form-group" style="padding-bottom: 15px">
+                                            <label for="{{ form.password_repeat.id_for_label }}"
+                                                   class="col-md-4 control-label">Confirm password:</label>
+                                            <input type="password" name="password2" class="form-control"
+                                                   required="" id="id_password2">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="submit" class='btn btn-success' value="Register">
+                                            <input type="hidden" value="/#register" name="source">
+                                        </div>
+                                    </div><!-- end body -->
+                                </div><!-- panel - default -->
+                            </form>
+                        </div>
+                    </div>
+                </div><!-- end col -->
+            </div><!-- end row -->
+        </div>
+    </section>
+</section>

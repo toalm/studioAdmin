@@ -1,0 +1,20 @@
+[
+  {
+    "model": "accounts.customuser",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$150000$M43rYCQgZIOE$KYwWikNJ95uK4GPUDzURfOZYkK0MP4JQzIEXOk9noAY=",
+      "last_login": "2019-07-14T08:14:31.981Z",
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2019-07-14T07:46:23.593Z",
+      "email": "admin@kanit.se",
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]

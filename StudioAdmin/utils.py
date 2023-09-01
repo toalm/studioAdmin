@@ -7,9 +7,9 @@ import logging
 # Third Party
 
 # Local
-logging.basicConfig(format='%(asctime)s [%(levelname)s]%(filename)s%(funcName)s(%(lineno)s)'
-                           '->%(message)s')
-log = logging.getLogger(__file__)
+from common.const import CONST_LOG_NAME
+
+log = logging.getLogger(CONST_LOG_NAME)
 
 
 class NotAllowedAccessError(Exception):
